@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flink-job-cluster
+  labels:
+    app: flink
+    component: job-cluster
+spec:
+  ports:
+    - name: rpc
+      port: 6123
+    - name: blob
+      port: 6124
+    - name: query
+      port: 6125
+      nodePort: 30025
+    - name: ui
+      port: 8081
+      nodePort: 30081
+  type: NodePort
+  selector:
+    app: flink
+    component: job-cluster

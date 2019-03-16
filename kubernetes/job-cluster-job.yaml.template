@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: flink-job-cluster
+spec:
+  template:
+    metadata:
+      labels:
+        app: flink
+        component: job-cluster
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: flink-job-cluster
+        image: ${FLINK_IMAGE_NAME}
+        imagePullPolicy: Never
+        args: ["job-cluster", "-Djobmanager.rpc.address=flink-job-cluster",
+               "-Dparallelism.default=${FLINK_JOB_PARALLELISM}", "-Dblob.server.port=6124", "-Dqueryable-state.server.ports=6125"]
+        ports:
+        - containerPort: 6123
+          name: rpc
+        - containerPort: 6124
+          name: blob
+        - containerPort: 6125
+          name: query
+        - containerPort: 8081
+          name: ui
