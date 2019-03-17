@@ -22,7 +22,6 @@ import org.apache.flink.api.common.functions.RichFlatMapFunction;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
 import org.apache.flink.api.common.state.ValueState;
 import org.apache.flink.api.common.state.ValueStateDescriptor;
-import org.apache.flink.runtime.state.filesystem.FsStateBackend;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.Configuration;
@@ -40,7 +39,7 @@ public class StreamingJob {
 
 		StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		env.enableCheckpointing(1000);
+		env.enableCheckpointing(10000);
 		env.setRestartStrategy(RestartStrategies.fixedDelayRestart(60, org.apache.flink.api.common.time.Time.of(10, TimeUnit.SECONDS)));
 
 		env.addSource(new ParallelEventSource())
@@ -52,7 +51,7 @@ public class StreamingJob {
 		env.execute();
 	}
 
-	private static class Event {
+	public static class Event {
 		public final long timestamp;
 		public final String userId;
 
