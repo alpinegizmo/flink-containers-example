@@ -37,11 +37,15 @@ will tear that all down.
 
 Docker Desktop and Docker Enterprise include compose-on-kubernetes, making it possible to run the docker compose script as a docker stack, using kubernetes as the orchestrator.
 
-    FLINK_JOB=com.ververica.example.StreamingJob FLINK_JOB_ARGUMENTS='' docker stack deploy --orchestrator=kubernetes -c docker/docker-compose.yml streaming-job
+    FLINK_JOB=com.ververica.example.StreamingJob FLINK_JOB_ARGUMENTS='' \
+    docker stack deploy --orchestrator=kubernetes -c docker/docker-compose.yml streaming-job
     
 To stop everything, use
 
     kubectl delete stack streaming-job
+
+Once again the flink dashboard will be at http://localhost:8081 and 
+the minio filesystem browser will be available at http://localhost:9000.
 
 ## Run with kubectl
 
