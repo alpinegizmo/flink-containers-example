@@ -33,11 +33,8 @@ image: 		## build a flink image for job mode
 		--scala-version $(SCALA_VERSION) \
 		--image-name streaming-job:latest
 
-run:            ## run the image with docker-compose
+run:        	## run the image with docker-compose
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker/docker-compose-up.sh
-
-k8s:            ## run the image with kubernetes
-	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker stack deploy --orchestrator=kubernetes -c docker/docker-compose.yml streaming-job
 
 status: 	## check the status of the running components
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker-compose -f docker/docker-compose.yml ps
@@ -47,3 +44,6 @@ stop: 		## stop all components of the job
 
 logs: 		## shows jobmanager logs
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker-compose -f docker/docker-compose.yml logs -f job-cluster
+
+k8s:            ## run the image with kubernetes
+	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker stack deploy --orchestrator=kubernetes -c docker/docker-compose.yml streaming-job
