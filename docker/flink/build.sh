@@ -48,6 +48,9 @@ key="$1"
     --from-release)
     FROM_RELEASE="true"
     ;;
+    --from-url)
+    FROM_URL="$2"
+    ;;
     --image-name)
     IMAGE_NAME="$2"
     shift
@@ -116,6 +119,11 @@ elif [ -n "${FROM_LOCAL}" ]; then
 elif [ -n "${FROM_ARCHIVE}" ]; then
     FLINK_DIST="${TMPDIR}/flink.tgz"
     cp "${FROM_ARCHIVE}" "${FLINK_DIST}"
+
+elif [ -n "${FROM_URL}" ]; then
+    FLINK_DIST="${TMPDIR}/flink.tgz"
+	echo "Downloading from ${FROM_URL}"
+    curl -# "${FROM_URL}" --output ${FLINK_DIST}
 
 else
 

@@ -1,9 +1,8 @@
-minio:
+run:
 	kubectl create -f minio-standalone-pvc.yaml
 	kubectl create -f minio-standalone-deployment.yaml
 	kubectl create -f minio-standalone-service.yaml
-
-flink:
+	kubectl create -f miniosetup-deployment.yaml
 	kubectl create -f job-cluster-service.yaml
 	FLINK_IMAGE_NAME=streaming-job FLINK_JOB=com.ververica.example.StreamingJob FLINK_JOB_PARALLELISM=1 envsubst < job-cluster-job.yaml.template | kubectl create -f -
 	FLINK_IMAGE_NAME=streaming-job FLINK_JOB_PARALLELISM=1 envsubst < task-manager-deployment.yaml.template | kubectl create -f -
@@ -13,6 +12,7 @@ status:
 
 stop:
 	- kubectl delete deployment minio
+	- kubectl delete deployment miniosetup
 	- kubectl delete pvc minio-pv-claim
 	- kubectl delete svc minio-service
 	- kubectl delete job flink-job-cluster

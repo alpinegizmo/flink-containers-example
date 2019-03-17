@@ -7,9 +7,9 @@
 
 JAR = target/streaming-job-*.jar
 
-FLINK_VERSION  = 1.8.0      ## set the flink version for the image
-HADOOP_VERSION = NONE       ## set the hadoop version for the image (set to NONE for a Hadoop-free Flink build)
-SCALA_VERSION  = 2.11       ## set the scala version for the image
+FLINK_VERSION  = 1.8.0
+HADOOP_VERSION = NONE
+SCALA_VERSION  = 2.11
 JOB            = com.ververica.example.StreamingJob
 ARGS           = ''
 
@@ -28,9 +28,12 @@ jar:
 
 image: 		## build a flink image for job mode
 	./docker/flink/build.sh --job-jar $(JAR) \
+		--from-url "https://dist.apache.org/repos/dist/dev/flink/flink-1.8.0-rc2/flink-1.8.0-bin-scala_$(SCALA_VERSION).tgz" \
+		--image-name streaming-job:latest
+
+image-from-archive:
+	./docker/flink/build.sh --job-jar $(JAR) \
 		--from-archive ~/Downloads/flink-1.8.0-bin-scala_2.11.tgz \
-		--hadoop-version $(HADOOP_VERSION) \
-		--scala-version $(SCALA_VERSION) \
 		--image-name streaming-job:latest
 
 run:        	## run the image with docker-compose
