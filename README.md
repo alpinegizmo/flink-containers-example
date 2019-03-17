@@ -1,3 +1,7 @@
+This is an example of how to run an Apache Flink application in a containerized environment, using either docker compose or kubernetes.
+
+minio, an s3-compatible filesystem, is used for checkpointing.
+
 ## Prerequisites
 
 You'll need docker and kubernetes to run this example. 

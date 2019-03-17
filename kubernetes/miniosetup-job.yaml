@@ -1,5 +1,5 @@
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: Job
 metadata:
   annotations:
     kompose.cmd: kompose convert
@@ -10,7 +10,6 @@ metadata:
   name: miniosetup
 spec:
   replicas: 1
-  strategy: {}
   template:
     metadata:
       creationTimestamp: null
@@ -21,9 +20,9 @@ spec:
       - command:
         - /bin/sh
         - -c
-        - ' sleep 10; /usr/bin/mc config host add myminio http://minio-service:9000 minio minio123; /usr/bin/mc mb myminio/flink; exit 0; '
+        - ' sleep 10; /usr/bin/mc config host add myminio http://minio-service:9000 minio minio123; /usr/bin/mc mb myminio/state; /usr/bin/mc mb myminio/highavailability; exit 0; '
         image: minio/mc
         name: miniosetup
         resources: {}
-      restartPolicy: Always
+      restartPolicy: OnFailure
 status: {}
