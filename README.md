@@ -4,15 +4,15 @@ You'll need docker and kubernetes to run this example.
 It has been tested with Docker Desktop for Mac, Version 2.0.0.3 (31259), with Kubernetes enabled, using the docker-for-desktop context.
 
 This example depends on FLINK-10817, added in Flink 1.8.0. 
-The Makefile and pom.xml will need to be updateed when Flink 1.8.0 is released.
+The Makefile and pom.xml will need to be updated when Flink 1.8.0 is released.
 
 ## Build a docker image
 
 To begin, you'll need to build a docker image by doing these two steps:
 
 ~~~ bash
-$ make jar
-$ make image
+make jar
+make image
 ~~~
 
 You will need the resulting image for any of the following approaches for running this job.
