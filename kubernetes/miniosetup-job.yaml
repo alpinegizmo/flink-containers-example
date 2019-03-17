@@ -1,15 +1,11 @@
-apiVersion: extensions/v1beta1
+apiVersion: batch/v1
 kind: Job
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.18.0 ()
   creationTimestamp: null
   labels:
     io.kompose.service: miniosetup
   name: miniosetup
 spec:
-  replicas: 1
   template:
     metadata:
       creationTimestamp: null
@@ -23,6 +19,4 @@ spec:
         - ' sleep 10; /usr/bin/mc config host add myminio http://minio-service:9000 minio minio123; /usr/bin/mc mb myminio/state; /usr/bin/mc mb myminio/highavailability; exit 0; '
         image: minio/mc
         name: miniosetup
-        resources: {}
       restartPolicy: OnFailure
-status: {}

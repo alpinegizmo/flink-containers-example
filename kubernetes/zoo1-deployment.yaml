@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: zoo1
+  name: zoo1
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: zoo1
+    spec:
+      containers:
+      - env:
+        - name: ZOO_MY_ID
+          value: "1"
+        - name: ZOO_PORT
+          value: "2181"
+        - name: ZOO_SERVERS
+          value: server.1=zoo1:2888:3888
+        image: zookeeper:3.4.9
+        name: zoo1
+        ports:
+        - containerPort: 2181
+        resources: {}
+      hostname: zoo1
+      restartPolicy: Always
+status: {}

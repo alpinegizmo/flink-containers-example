@@ -79,13 +79,13 @@ high-availability: NONE
 # Must be a durable file system that is accessible from all nodes
 # (like HDFS, S3, Ceph, nfs, ...)
 #
-# high-availability.storageDir: s3://flink/highavailability
+high-availability.storageDir: s3://highavailability/storage
 
 # The list of ZooKeeper quorum peers that coordinate the high-availability
 # setup. This must be a list of the form:
 # "host1:clientPort,host2:clientPort,..." (default clientPort: 2181)
 #
-# high-availability.zookeeper.quorum: zoo1:2181
+high-availability.zookeeper.quorum: zoo1:2181
 
 
 # ACL options are based on https://zookeeper.apache.org/doc/r3.1.2/zookeeperProgrammers.html#sc_BuiltinACLSchemes
@@ -109,11 +109,11 @@ state.backend: filesystem
 # Directory for checkpoints filesystem, when using any of the default bundled
 # state backends.
 #
-state.checkpoints.dir: s3://flink/checkpoints
+state.checkpoints.dir: s3://state/checkpoints
 
 # Default target directory for savepoints, optional.
 #
-state.savepoints.dir: s3://flink/savepoints
+state.savepoints.dir: s3://state/savepoints
 
 # Flag to enable/disable incremental checkpoints for backends that
 # support incremental checkpoints (like the RocksDB state backend).
@@ -212,6 +212,8 @@ rest.port: 8081
 #==============================================================================
 # ZK Security Configuration
 #==============================================================================
+
+zookeeper.sasl.disable: true
 
 # Below configurations are applicable if ZK ensemble is configured for security
 
