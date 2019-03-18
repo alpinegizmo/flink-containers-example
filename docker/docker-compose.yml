@@ -48,6 +48,7 @@ services:
       /bin/sh -c "
       sleep 10;
       /usr/bin/mc config host add myminio http://minio-service:9000 minio minio123;
-      /usr/bin/mc mb myminio/flink;
+      /usr/bin/mc mb myminio/state;
+      /usr/bin/mc mb myminio/highavailability;
       exit 0;
       "
