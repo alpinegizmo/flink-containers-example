@@ -6,11 +6,11 @@ run:
 	kubectl create -f minio-standalone-service.yaml
 	kubectl create -f miniosetup-job.yaml
 	kubectl create -f job-cluster-service.yaml
-	FLINK_IMAGE_NAME=streaming-job FLINK_JOB=com.ververica.example.StreamingJob FLINK_JOB_PARALLELISM=1 envsubst < job-cluster-job.yaml.template | kubectl create -f -
-	FLINK_IMAGE_NAME=streaming-job FLINK_JOB_PARALLELISM=1 envsubst < task-manager-deployment.yaml.template | kubectl create -f -
+	FLINK_IMAGE_NAME=streaming-job envsubst < job-cluster-job.yaml.template | kubectl create -f -
+	FLINK_IMAGE_NAME=streaming-job FLINK_NUM_OF_TASKMANAGERS=2 envsubst < task-manager-deployment.yaml.template | kubectl create -f -
 
 status:
-	kubectl get services,deployments,pods,pvc,rc,rs
+	kubectl get all
 
 stop:
 #	- kubectl delete deployment zoo1

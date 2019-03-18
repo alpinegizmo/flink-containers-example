@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: flink-task-manager
 spec:
-  replicas: ${FLINK_JOB_PARALLELISM}
+  replicas: ${FLINK_NUM_OF_TASKMANAGERS}
   template:
     metadata:
       labels:
