@@ -2,6 +2,8 @@ This is an example of how to run an Apache Flink application in a containerized 
 
 minio, an s3-compatible filesystem, is used for checkpointing.
 
+zookeeper is used for high availability.
+
 ## Prerequisites
 
 You'll need docker and kubernetes to run this example. 
@@ -61,3 +63,15 @@ The flink dashboard will be at http://localhost:30081, and the minio browser wil
 To bring it all down, use
 
     make stop
+
+## Is this production-ready?
+
+No. At a minimum you should take care of these things:
+
+* imagePullPolicy: Never
+* minio and zookeeper should be run as clusters, rather than in single server mode
+* use k8s namespaces
+
+Plus the usual getting-your-flink-job-ready-for-production topics, such as:
+
+* UIDs on the stateful operators

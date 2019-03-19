@@ -70,7 +70,8 @@ parallelism.default: 1
 
 # The high-availability mode. Possible options are 'NONE' or 'zookeeper'.
 #
-high-availability: NONE
+high-availability: zookeeper
+high-availability.jobmanager.port: 6123
 
 # The path where metadata for master recovery is persisted. While ZooKeeper stores
 # the small ground truth for checkpoint and leader election, this location stores

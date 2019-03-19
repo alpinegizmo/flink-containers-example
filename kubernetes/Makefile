@@ -1,6 +1,6 @@
 run:
-#	kubectl create -f zoo1-deployment.yaml
-#	kubectl create -f zoo1-service.yaml
+	kubectl create -f zoo1-deployment.yaml
+	kubectl create -f zoo1-service.yaml
 	kubectl create -f minio-standalone-pvc.yaml
 	kubectl create -f minio-standalone-deployment.yaml
 	kubectl create -f minio-standalone-service.yaml
@@ -13,8 +13,8 @@ status:
 	kubectl get all
 
 stop:
-#	- kubectl delete deployment zoo1
-#	- kubectl delete service zoo1
+	- kubectl delete deployment zoo1
+	- kubectl delete service zoo1
 	- kubectl delete deployment minio
 	- kubectl delete job miniosetup
 	- kubectl delete pvc minio-pv-claim
