@@ -7,7 +7,7 @@ run:
 	kubectl create -f miniosetup-job.yaml
 	kubectl create -f job-cluster-service.yaml
 	FLINK_IMAGE_NAME=streaming-job envsubst < job-cluster-job.yaml.template | kubectl create -f -
-	FLINK_IMAGE_NAME=streaming-job FLINK_NUM_OF_TASKMANAGERS=2 envsubst < task-manager-deployment.yaml.template | kubectl create -f -
+	FLINK_IMAGE_NAME=streaming-job FLINK_NUM_OF_TASKMANAGERS=1 envsubst < task-manager-deployment.yaml.template | kubectl create -f -
 
 status:
 	kubectl get all

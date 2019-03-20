@@ -53,7 +53,7 @@ taskmanager.numberOfTaskSlots: 4
 
 # The parallelism used for programs that did not specify and other parallelism.
 
-parallelism.default: 1
+parallelism.default: 4
 
 # The default file system scheme and authority.
 #
@@ -70,7 +70,7 @@ parallelism.default: 1
 
 # The high-availability mode. Possible options are 'NONE' or 'zookeeper'.
 #
-high-availability: zookeeper
+high-availability: NONE
 high-availability.jobmanager.port: 6123
 
 # The path where metadata for master recovery is persisted. While ZooKeeper stores

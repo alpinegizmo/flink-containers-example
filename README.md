@@ -14,7 +14,7 @@ The Makefile and pom.xml will need to be updated when Flink 1.8.0 is released.
 
 ## Build a docker image
 
-To begin, you'll need to build a docker image by doing these two steps:
+To begin, you'll need to build a job-specific docker image by doing these two steps:
 
 ~~~ bash
 make jar

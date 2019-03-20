@@ -117,7 +117,7 @@ public class StreamingJob {
 			} else {
 				counter.update(++count);
 
-				if (count % 1000 == 0) {
+				if (count % 500 == 0) {
 					out.collect(new Tuple2<>(event.userId, count));
 				}
 			}
