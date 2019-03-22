@@ -36,6 +36,14 @@ image-from-archive:
 		--from-archive ~/Downloads/flink-1.8.0-bin-scala_2.11.tgz \
 		--image-name streaming-job:latest
 
+image-from-release:
+	./docker/flink/build.sh --job-jar $(JAR) \
+		--from-release \
+		--flink-version $(FLINK_VERSION) \
+		--hadoop-version $(HADOOP_VERSION) \
+		--scala-version $(SCALA_VERSION) \
+		--image-name streaming-job:latest
+
 run:        	## run the image with docker-compose
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker/docker-compose-up.sh
 

@@ -101,7 +101,12 @@ if [ -n "${FROM_RELEASE}" ]; then
 
   [[ -n "${FLINK_VERSION}" ]] && [[ -n "${HADOOP_VERSION}" ]] && [[ -n "${SCALA_VERSION}" ]] || usage
 
-  FLINK_DIST_FILE_NAME="flink-${FLINK_VERSION}-bin-hadoop${HADOOP_VERSION}-scala_${SCALA_VERSION}.tgz"
+  if [ "${HADOOP_VERSION}" != "NONE" ]; then
+    FLINK_DIST_FILE_NAME="flink-${FLINK_VERSION}-bin-hadoop${HADOOP_VERSION}-scala_${SCALA_VERSION}.tgz"
+  else
+    FLINK_DIST_FILE_NAME="flink-${FLINK_VERSION}-bin-scala_${SCALA_VERSION}.tgz"
+  fi
+
   CURL_OUTPUT="${TMPDIR}/${FLINK_DIST_FILE_NAME}"
 
   echo "Downloading ${FLINK_DIST_FILE_NAME} from ${FLINK_BASE_URL}"

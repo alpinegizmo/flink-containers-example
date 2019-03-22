@@ -127,8 +127,8 @@
       <url>https://repository.apache.org/content/repositories/snapshots/</url>
     </repository>
     <repository>
-      <id>1.8-rc2</id>
-      <url>https://repository.apache.org/content/repositories/orgapacheflink-1213/</url>
+      <id>1.8.0-rc4</id>
+      <url>https://repository.apache.org/content/repositories/orgapacheflink-1215/</url>
     </repository>
   </repositories>
   <dependencies>
