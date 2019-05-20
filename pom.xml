@@ -22,7 +22,7 @@ under the License.
 
 	<groupId>com.ververica.example</groupId>
 	<artifactId>streaming-job</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	<packaging>jar</packaging>
 
 	<name>Flink Streaming Job</name>
@@ -32,28 +32,10 @@ under the License.
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<flink.version>1.8.0</flink.version>
 		<java.version>1.8</java.version>
-		<scala.binary.version>2.11</scala.binary.version>
+		<scala.binary.version>2.12</scala.binary.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>
-
-	<repositories>
-		<repository>
-			<id>apache.snapshots</id>
-			<name>Apache Development Snapshot Repository</name>
-			<url>https://repository.apache.org/content/repositories/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>1.8.0-rc4</id>
-			<url>https://repository.apache.org/content/repositories/orgapacheflink-1215/</url>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<!-- Apache Flink dependencies -->

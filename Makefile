@@ -9,7 +9,7 @@ JAR = target/streaming-job-*.jar
 
 FLINK_VERSION  = 1.8.0
 HADOOP_VERSION = NONE
-SCALA_VERSION  = 2.11
+SCALA_VERSION  = 2.12
 JOB            = com.ververica.example.StreamingJob
 ARGS           = ''
 
@@ -28,12 +28,12 @@ jar:
 
 image: 		## build a flink image for job mode
 	./docker/flink/build.sh --job-jar $(JAR) \
-		--from-url "https://dist.apache.org/repos/dist/dev/flink/flink-1.8.0-rc2/flink-1.8.0-bin-scala_$(SCALA_VERSION).tgz" \
+		--from-url "https://dist.apache.org/repos/dist/dev/flink/flink-$(FLINK_VERSION)/flink-$(FLINK_VERSION)-bin-scala_$(SCALA_VERSION).tgz" \
 		--image-name streaming-job:latest
 
 image-from-archive:
 	./docker/flink/build.sh --job-jar $(JAR) \
-		--from-archive ~/Downloads/flink-1.8.0-bin-scala_2.11.tgz \
+		--from-archive ~/Downloads/flink-$(FLINK_VERSION)-bin-scala_$(SCALA_VERSION).tgz \
 		--image-name streaming-job:latest
 
 image-from-release:
@@ -53,8 +53,11 @@ status: 	## check the status of the running components
 stop: 		## stop all components of the job
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker-compose -f docker/docker-compose.yml down -v
 
-logs: 		## shows jobmanager logs
+jm-logs: 		## shows jobmanager logs
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker-compose -f docker/docker-compose.yml logs -f job-cluster
+
+tm-logs: 		## shows jobmanager logs
+	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker-compose -f docker/docker-compose.yml logs -f taskmanager
 
 k8s:            ## run the image with kubernetes
 	FLINK_JOB=$(JOB) FLINK_JOB_ARGUMENTS=$(ARGS) docker stack deploy --orchestrator=kubernetes -c docker/docker-compose.yml streaming-job

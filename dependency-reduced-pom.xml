@@ -4,7 +4,7 @@
   <groupId>com.ververica.example</groupId>
   <artifactId>streaming-job</artifactId>
   <name>Flink Streaming Job</name>
-  <version>0.1</version>
+  <version>0.2</version>
   <url>http://www.ververica.com</url>
   <build>
     <pluginManagement>
@@ -116,21 +116,6 @@
       </dependencies>
     </profile>
   </profiles>
-  <repositories>
-    <repository>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots />
-      <id>apache.snapshots</id>
-      <name>Apache Development Snapshot Repository</name>
-      <url>https://repository.apache.org/content/repositories/snapshots/</url>
-    </repository>
-    <repository>
-      <id>1.8.0-rc4</id>
-      <url>https://repository.apache.org/content/repositories/orgapacheflink-1215/</url>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>org.apache.flink</groupId>
@@ -166,16 +151,16 @@
     </dependency>
     <dependency>
       <groupId>org.apache.flink</groupId>
-      <artifactId>flink-streaming-java_2.11</artifactId>
+      <artifactId>flink-streaming-java_2.12</artifactId>
       <version>1.8.0</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
-          <artifactId>flink-runtime_2.11</artifactId>
+          <artifactId>flink-runtime_2.12</artifactId>
           <groupId>org.apache.flink</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>flink-clients_2.11</artifactId>
+          <artifactId>flink-clients_2.12</artifactId>
           <groupId>org.apache.flink</groupId>
         </exclusion>
         <exclusion>
@@ -207,7 +192,7 @@
   </dependencies>
   <properties>
     <java.version>1.8</java.version>
-    <scala.binary.version>2.11</scala.binary.version>
+    <scala.binary.version>2.12</scala.binary.version>
     <flink.version>1.8.0</flink.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
