@@ -7,7 +7,7 @@
 
 JAR = target/streaming-job-*.jar
 
-FLINK_VERSION  = 1.9.0
+FLINK_VERSION  = 1.10.0
 HADOOP_VERSION = NONE
 SCALA_VERSION  = 2.12
 JOB            = com.ververica.example.StreamingJob
@@ -26,12 +26,7 @@ help:           ## Show this help.
 jar:
 	mvn clean package
 
-image: 		## build a flink image for job mode
-	./docker/flink/build.sh --job-artifacts $(JAR) \
-		--from-url "https://dist.apache.org/repos/dist/dev/flink/flink-$(FLINK_VERSION)/flink-$(FLINK_VERSION)-bin-scala_$(SCALA_VERSION).tgz" \
-		--image-name streaming-job:latest
-
-image-from-archive:
+image:
 	./docker/flink/build.sh --job-artifacts $(JAR) \
 		--from-archive ~/Downloads/flink-$(FLINK_VERSION)-bin-scala_$(SCALA_VERSION).tgz \
 		--image-name streaming-job:latest

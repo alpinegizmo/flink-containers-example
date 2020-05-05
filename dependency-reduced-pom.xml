@@ -120,7 +120,7 @@
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-java</artifactId>
-      <version>1.9.0</version>
+      <version>1.10.0</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -128,7 +128,7 @@
           <groupId>org.apache.flink</groupId>
         </exclusion>
         <exclusion>
-          <artifactId>flink-shaded-asm-6</artifactId>
+          <artifactId>flink-shaded-asm-7</artifactId>
           <groupId>org.apache.flink</groupId>
         </exclusion>
         <exclusion>
@@ -148,7 +148,7 @@
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-streaming-java_2.12</artifactId>
-      <version>1.9.0</version>
+      <version>1.10.0</version>
       <scope>provided</scope>
       <exclusions>
         <exclusion>
@@ -193,7 +193,7 @@
   <properties>
     <java.version>1.8</java.version>
     <scala.binary.version>2.12</scala.binary.version>
-    <flink.version>1.9.0</flink.version>
+    <flink.version>1.10.0</flink.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.target>${java.version}</maven.compiler.target>

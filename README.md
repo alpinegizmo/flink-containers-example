@@ -7,7 +7,7 @@ zookeeper is used for high availability.
 ## Prerequisites
 
 You'll need docker and kubernetes to run this example. 
-It has been tested with Docker Desktop for Mac, Version 2.0.0.3 (31259), with Kubernetes enabled, using the docker-for-desktop context.
+It has been tested with Docker Desktop for Mac, Version 2.2.0.3 (42716), with Kubernetes enabled, using the docker-for-desktop context.
 
 This example depends on FLINK-10817, added in Flink 1.8.0. 
 
